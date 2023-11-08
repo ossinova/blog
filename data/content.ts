@@ -204,9 +204,9 @@ export const timelineContent = {
   },
   items: [
     {
-      title: 'Software Engineer II @ Nike (via CDW)',
+      title: 'Senior Consultant @ Capgemini',
       content:
-        'Developing digital prototypes and tools for designers @ Nike LeBron James Innovation Center.',
+        'Consulting on IT based client projects, with a focus on insights and data.',
       cName: 'event',
     },
     {
@@ -214,19 +214,19 @@ export const timelineContent = {
       cName: 'date',
     },
     {
-      content: '2022',
+      content: '2021',
       cName: 'date',
     },
     {
-      title: 'Freelancer and Blogger',
+      title: 'Consultant @ Capgemini',
       content:
-        'Building, maintaining open-source oscardyremyhr.com Next.js blog & CMS. Writing about front-end code, devops, and tech.',
+        'Consulting on IT based client projects, with a focus on insights and data.',
       cName: 'event',
     },
     {
-      title: 'Freelance + React Learning',
+      title: 'Junior Data Engieer @ Helthjem',
       content:
-        'Deep-dive into React, improving JavaScript skills, and honing user interface design capabilities.',
+        'Developed a data platform in AWS.',
       cName: 'event',
     },
     {
@@ -238,59 +238,19 @@ export const timelineContent = {
       cName: 'date',
     },
     {
-      title: 'Application Engineer @ DemandPDX',
+      title: 'MSc in Business Analytics @ BI',
       content:
-        'Fullstack Development in an agency environment for many clients including Hanna Andersson and Leatherman.',
+        'Returned home to do my Masters in IT + Business.',
       cName: 'event',
     },
     {
-      title: 'Lead UI Engineer @ KEEN Footwear',
+      title: 'BSc in Information Sciennnces & Technology @ Penn State',
       content:
-        'Developed new Salesforce Commerce Cloud Ecommerce websites for KEEN Footwear and Chrome Industries. Collaborated with BASIC® Agency.',
+        'Traveled to the States to do my Bachelor in IT.',
       cName: 'event',
     },
     {
-      content: '2015',
-      cName: 'date',
-    },
-    {
-      content: '2014',
-      cName: 'date',
-    },
-    {
-      title: 'Web Dev I @ Columbia Sportswear',
-      content:
-        'Developed Frontend code for Columbia, SOREL, and Mountain Hardwear. Implemented localized content and content modules for international sales.',
-      cName: 'event',
-    },
-    {
-      title: 'Frontend Dev @ Dealer Spike',
-      content:
-        'HTML, CSS, and JavaScript and design. Created web experiences with a focus on SEO for powersports dealerships across US and Canada.',
-      cName: 'event',
-    },
-    {
-      content: '2011',
-      cName: 'date',
-    },
-    {
-      content: '2007',
-      cName: 'date',
-    },
-    {
-      title: 'Freelancer @ Self Employed',
-      content:
-        'Managed all aspects of business with 30+ clients. Developed websites using HTML, CSS, and JavaScript. Utilized CSS3, Boostrap, jQuery, and Wordpress.',
-      cName: 'event',
-    },
-    {
-      title: 'UI Designer @ Selliken Systems',
-      content:
-        'Worked on the HomeQuest real estate property search tool. Designed using Adobe Photoshop and Illustrator.',
-      cName: 'event',
-    },
-    {
-      content: '2005',
+      content: '2013',
       cName: 'date',
     },
     {
@@ -298,30 +258,22 @@ export const timelineContent = {
       cName: 'date',
     },
     {
-      title: 'Learning @ Southridge High School',
-      content: `Began designing and animating Macromedia Flash websites and coding in ActionScript in my school's TV Studio.`,
-      cName: 'event',
-    },
-    {
-      title: 'Learning @ Southridge High School',
+      title: 'First Computer',
       content:
-        'Wrote my first lines of HTML and CSS using Yahoo! Geocities. Fell in love with web development. Took HTML/CSS Web Design course sophomore year.',
+        'My dad got a Apple iMac. Started browsing the web and playing flash games.',
       cName: 'event',
     },
     {
-      content: '2000',
-      cName: 'date',
+      title: 'Born',
+      content:
+        'Came to life May 20th in Oslo, Norway.',
+      cName: 'event',
     },
     {
       content: '1995',
       cName: 'date',
     },
-    {
-      title: 'First Computer',
-      content:
-        'Got a Compaq Presario CDS 524. Read Microsoft Encarta and played "Where In the World is Carmen San Diego" and "X-Wing".',
-      cName: 'event',
-    },
+    
   ],
 };
 
