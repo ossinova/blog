@@ -1,0 +1,62 @@
+{
+"short_name": "Oscar Dyremyhr",
+"name": "Oscar Dyremyhr – Developer & designer",
+ "icons": [
+  {
+   "src": "\/android-icon-36x36.png",
+   "sizes": "36x36",
+   "type": "image\/png",
+   "density": "0.75"
+  },
+  {
+   "src": "\/android-icon-48x48.png",
+   "sizes": "48x48",
+   "type": "image\/png",
+   "density": "1.0"
+  },
+  {
+   "src": "\/android-icon-72x72.png",
+   "sizes": "72x72",
+   "type": "image\/png",
+   "density": "1.5"
+  },
+  {
+   "src": "\/android-icon-96x96.png",
+   "sizes": "96x96",
+   "type": "image\/png",
+   "density": "2.0"
+  },
+  {
+   "src": "\/android-icon-144x144.png",
+   "sizes": "144x144",
+   "type": "image\/png",
+   "density": "3.0"
+  },
+  {
+   "src": "\/android-icon-192x192.png",
+   "sizes": "192x192",
+   "type": "image\/png",
+   "density": "4.0"
+  }
+ ],
+ "start_url": "/",
+  "background_color": "#f7f7f7",
+  "display": "standalone",
+  "scope": "/",
+  "shortcuts": [
+    {
+      "name": "Oscar Dyremyhr Blog",
+      "short_name": "Oscar",
+      "description": "Developer, designer, and React enthusiast. Making websites since before the internet was cool.",
+      "url": "/"
+    }
+  ],
+  "description": "Oscar Dyremyhr Thumbnail",
+  "screenshots": [
+    {
+      "src": "/thumbnail.png",
+      "type": "image/png",
+      "sizes": "1200x627"
+    }
+  ]
+}

@@ -68,6 +68,7 @@ const Uses: FC<UsesProps> = ({ content }) => {
   return (
     <>
       <h1 className="pageHeading">{content.heading}</h1>
+      <h2>{content.subheading}</h2>
       <div css={styleUsesMarkdown}>
         <Markdown markdown={content.devices} />
         <Markdown markdown={content.stack} />

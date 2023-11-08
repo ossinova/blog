@@ -5,8 +5,8 @@ const Document: NextPage<DocumentProps> = () => {
   return (
     <Html lang="en">
       <Head>
-        <link rel="apple-touch-icon" href="/touch-192.png" />
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/favicons/apple-icon.png" />
+        <link rel="manifest" href="/favicons/manifest.json" />
         <meta httpEquiv="content-type" content="text/html; charset=utf-8" />
 
         <script

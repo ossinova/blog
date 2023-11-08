@@ -1,1 +1,1 @@
-export const categories = ['-', 'code', 'tools', 'design', 'personal'];
+export const categories = ['-', 'code', 'databricks', 'azure', 'tools', 'design', 'personal'];

@@ -6,6 +6,8 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import { generateSlug } from '@/utils/generateSlug';
 import rangeParser from 'parse-numeric-range';
+import remarkGfm from 'remark-gfm';
+import { Callout, Accordion, Quote } from '@/components/CustomMDComponents';
 
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
@@ -17,6 +19,8 @@ import bash from 'react-syntax-highlighter/dist/cjs/languages/prism/bash';
 import markdown from 'react-syntax-highlighter/dist/cjs/languages/prism/markdown';
 import json from 'react-syntax-highlighter/dist/cjs/languages/prism/json';
 import lua from 'react-syntax-highlighter/dist/cjs/languages/prism/lua';
+import python from 'react-syntax-highlighter/dist/cjs/languages/prism/python';
+import sql from 'react-syntax-highlighter/dist/cjs/languages/prism/sql';
 
 SyntaxHighlighter.registerLanguage('tsx', tsx);
 SyntaxHighlighter.registerLanguage('typescript', typescript);
@@ -25,6 +29,8 @@ SyntaxHighlighter.registerLanguage('bash', bash);
 SyntaxHighlighter.registerLanguage('markdown', markdown);
 SyntaxHighlighter.registerLanguage('json', json);
 SyntaxHighlighter.registerLanguage('lua', lua);
+SyntaxHighlighter.registerLanguage('python', python);
+SyntaxHighlighter.registerLanguage('sql', sql);
 
 import { MarkdownTypes } from '@/types/markdown';
 
@@ -201,6 +207,9 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
   }
 
   const MarkdownComponents: object = {
+    callout: ({ node, ...props }) => <Callout {...props} />,
+    accordion: ({ node, ...props }) => <Accordion {...props} />,
+    quote: ({ node, ...props }) => <Quote {...props} />,
     code({
       node,
       inline,
@@ -361,6 +370,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
   return (
     <ReactMarkdown
       components={MarkdownComponents}
+      remarkPlugins={[remarkGfm]}
       rehypePlugins={[[rehypeRaw, { passThrough: ['element'] }]]}
       css={styleMarkdown}
     >
