@@ -200,7 +200,7 @@ export const timelineContent = {
   },
   fullStory: {
     text: 'Read the full story',
-    link: '/blog/2021-a-dev-odyssey',
+    link: '/blog/my-journey-to-data-engineering-a-decade-of-growth-and-learning',
   },
   items: [
     {
