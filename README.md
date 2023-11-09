@@ -170,6 +170,7 @@ This project uses [Vercel OG](https://vercel.com/docs/concepts/functions/edge-fu
 
 - [Next/Image Component](#nextimage-component)
 - [Code Line Highlighting](#code-line-highlighting)
+- [Github Flavored Markdown](#github-flavored-markdown)
 - [Heading Anchors](#heading-anchors)
 - [Link Behavior](#link-behavior)
 - [iFrame Embeds](#iframe-embeds)
@@ -192,6 +193,10 @@ Retain the terseness of pure Markdown while getting the benefits of the Next/Ima
 ` ```JSX {3,5-8} ... `
 
 - Individually highlight specific lines of code using a space after the language declaration followed by this JSON metastring. Highlight individual lines and/or a range of contiguous lines, separated by commas.
+
+### Github Flavored Markdown
+
+- Uses the plugin RehypeGfm to add support for tables, strikethrough, tasklist, fotnotes [Github](https://github.com/remarkjs/remark-gfm)
 
 ### Heading Anchors
 
