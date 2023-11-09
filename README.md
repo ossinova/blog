@@ -196,7 +196,7 @@ Retain the terseness of pure Markdown while getting the benefits of the Next/Ima
 
 ### Github Flavored Markdown
 
-- Uses the plugin RehypeGfm to add support for tables, strikethrough, tasklist, fotnotes [Github](https://github.com/remarkjs/remark-gfm)
+- Uses the plugin RemarkGfm to add support for tables, strikethrough, tasklists, fotnotes... [Github - RemarkGfm](https://github.com/remarkjs/remark-gfm#what-is-this)
 
 ### Heading Anchors
 
