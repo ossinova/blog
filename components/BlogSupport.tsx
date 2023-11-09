@@ -6,6 +6,7 @@ import LikeButton from '@/components/LikeButton';
 import { donate } from '@/data/content';
 import { gtagEvent } from '@/lib/gtag';
 import BlogPostTweet from '@/components/BlogPostTweet';
+import BlogPostLinkedIn from '@/components/BlogPostLinkedIn';
 
 type BlogSupportProps = {
   id: number;
@@ -238,8 +239,11 @@ const BlogSupport: FC<BlogSupportProps> = ({
       fontSize: 14,
       span: {
         marginRight: '.5rem',
+        marginLeft: '.5rem',
         '@media (max-width: 480px)': {
           marginRight: 2,
+          marginLeft: 2,
+        
         },
       },
       button: {
@@ -247,6 +251,7 @@ const BlogSupport: FC<BlogSupportProps> = ({
         textDecoration: 'underline',
         '&:last-of-type': {
           marginLeft: '1.5rem',
+          marginRight: '1.5rem',
         },
         '@media (max-width: 480px)': {
           fontSize: 12,
@@ -322,6 +327,13 @@ const BlogSupport: FC<BlogSupportProps> = ({
                     Buy me a coffee
                   </button>
                   <BlogPostTweet
+                    title={title}
+                    url={url}
+                    text={true}
+                    size={19}
+                    color={'var(--color-text)'}
+                  />
+                  <BlogPostLinkedIn
                     title={title}
                     url={url}
                     text={true}
