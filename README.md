@@ -1,6 +1,8 @@
-# [amirardalan.com](https://amirardalan.com)
+# [oscardyremyhr.me](https://oscardyremyhr.me)
 
-A Next.js Markdown Blog and CMS written in TypeScript. Designed, built, and maintained by [@amirardalan](https://github.com/amirardalan)
+A Portfolio blog heavily inspired by [@amirardalan](https://github.com/amirardalan/amirdalan.com): Next.js Markdown Blog and CMS written in TypeScript. Designed, built, and maintained by [@amirardalan](https://github.com/amirardalan)
+
+- Visit his blog here for morer detail [amirdalan.com](https://amirdalan.com)
 
 ### Primarily Built with:
 
