@@ -1,133 +1,30 @@
-import { FC, useLayoutEffect, useRef } from 'react';
-import {
-  BufferAttribute,
-  PlaneGeometry,
-  Mesh,
-  Material,
-  BufferGeometry,
-} from 'three';
-import { useFrame } from '@react-three/fiber';
-import { MeshDistortMaterial } from '@react-three/drei';
-import { createNoise2D } from 'simplex-noise';
-import { Theme, useTheme } from '@emotion/react';
+import React, { useRef, useEffect } from 'react';
+import { useGLTF } from '@react-three/drei';
+import { useFrame, useThree } from '@react-three/fiber';
 
-type CanvasTerrainProps = {
-  detail: number;
-  height: number;
-  texture: number;
-  scale: number;
-  rotation: number;
-  offset: {
-    x: number;
-    z: number;
-  };
-};
+const CanvasTerrain = () => {
+  const modelRef = useRef();
+  const { scene } = useGLTF('/avatar/your_avatar.glb');
+  // const { camera } = useThree();
 
-type Offset = { x: number; z: number };
+  // useEffect(() => {
+  //   if (modelRef.current) {
+  //     // Adjust the camera to look at the model
+  //     camera.lookAt(modelRef.current.position);
+  //   }
+  // }, [camera, modelRef]);
 
-type GenerateTerrainFn = (
-  detail: number,
-  height: number,
-  texture: number,
-  scale: number,
-  offset: Offset
-) => Float32Array;
-
-const generateTerrain: GenerateTerrainFn = (
-  detail,
-  height,
-  texture,
-  scale,
-  offset
-) => {
-  const noise2D = createNoise2D();
-  const noise = (level: number, x: number, z: number): number =>
-    noise2D(
-      offset.x * scale + scale * level * x,
-      offset.z * scale + scale * level * z
-    ) /
-      level +
-    (level > 1 ? noise(level / 2, x, z) : 0);
-
-  const arrayLength = detail ** 2 * 3;
-  const result = new Float32Array(arrayLength);
-
-  for (let i = 0; i < arrayLength; i++) {
-    let v: number;
-    switch (i % 3) {
-      case 0:
-        v = i / 3;
-        result[i] = (offset.x + ((v % detail) / detail - 0.5)) * scale;
-        break;
-      case 1:
-        v = (i - 1) / 3;
-        result[i] =
-          noise(
-            2 ** texture,
-            (v % detail) / detail - 0.5,
-            Math.floor(v / detail) / detail - 0.5
-          ) * height;
-        break;
-      case 2:
-        v = (i - 2) / 3;
-        result[i] = (offset.z + Math.floor(v / detail) / detail - 0.5) * scale;
-        break;
-    }
-  }
-
-  return result;
-};
-
-const CanvasTerrain: FC<CanvasTerrainProps> = ({
-  detail,
-  height,
-  texture = 2,
-  scale = 2,
-  offset = { x: 0, z: 0 },
-  rotation = 1,
-}) => {
-  const theme: Theme = useTheme();
-  interface PlaneGeometryRef extends PlaneGeometry {
-    elementsNeedUpdate: boolean;
-  }
-
-  const ref = useRef<PlaneGeometryRef>(null);
-  const mesh = useRef<Mesh<BufferGeometry, Material | Material[]>>(null);
-  useFrame(() => {
-    if (mesh.current) {
-      mesh.current.rotation.y += rotation / 20000;
+  useFrame(({ clock }) => {
+    const elapsedTime = clock.getElapsedTime();
+    const rotationAngle = Math.sin(elapsedTime) * 0.50;
+    if (modelRef.current) {
+      modelRef.current.rotation.y = rotationAngle;
     }
   });
 
-  useLayoutEffect(() => {
-    if (ref.current) {
-      const node = ref.current;
-      node.setAttribute(
-        'position',
-        new BufferAttribute(
-          generateTerrain(detail, height, texture, scale, offset),
-          3
-        )
-      );
-      node.elementsNeedUpdate = true;
-      node?.computeVertexNormals();
-    }
-  }, [detail, height, texture, scale, offset]);
-
-  return (
-    <mesh ref={mesh}>
-      <planeGeometry
-        args={[undefined, undefined, detail - 1, detail - 1]}
-        ref={ref}
-      />
-      <MeshDistortMaterial
-        distort={0.9}
-        speed={0.05}
-        wireframe
-        emissive={theme.canvas}
-      />
-    </mesh>
-  );
+  const scaleFactor =  4; // Adjust this value as needed
+  const yOffset = -2;
+  return <primitive object={scene} ref={modelRef} scale={[scaleFactor, scaleFactor, scaleFactor]} position={[0, yOffset, 0]} />;
 };
 
 export default CanvasTerrain;

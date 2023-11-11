@@ -109,14 +109,19 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
     marginBottom: '1rem',
   });
   const styleMainRight = css({
-    position: 'relative',
-    // background: 'var(--color-gradient)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     height: '72vh',
     '@media (max-width: 890px)': {
       height: '45vh',
       marginTop: '2rem',
     },
+    '@media (max-width: 768px)': { // Adjust this value based on your mobile breakpoint
+      display: 'none', // Hide the canvas loader on mobile devices
+    },
   });
+  
 
   return (
     <Container
@@ -143,15 +148,15 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
             />
           </div>
         </div>
-        <div css={styleMainRight} className="animationWrapper" style={{ position: 'relative' }}>
-          {/* <CanvasLoader /> */}
-          <Image
+        <div css={styleMainRight} className="animationWrapper">
+          <CanvasLoader />
+          {/* <Image
             src="/hero2.png" // The path to your image file
             alt="Hero Image"
             layout="fill" // This will make the image fill the parent container
             objectFit="contain" // This is like background-size: cover for the img tag
             priority // This tells Next.js to preload this image on the initial load
-          />
+          /> */}
 
         </div>
       </main>

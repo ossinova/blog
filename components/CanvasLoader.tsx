@@ -1,74 +1,34 @@
 import React, { FC, useState, useEffect } from 'react';
-import { css } from '@emotion/react';
 import { Canvas } from '@react-three/fiber';
-import CanvasTerrain from '@/components/CanvasTerrain';
-
-const styleRandomizeButton = css({
-  zIndex: 4,
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  height: '100%',
-  width: '100%',
-  background: 'transparent',
-  border: 'none',
-  outline: 'none',
-  cursor: 'pointer',
-});
+import { PerspectiveCamera, OrbitControls } from '@react-three/drei';
+import CanvasTerrain from '@/components/CanvasTerrain'; // Make sure the path is correct
 
 const CanvasLoader: FC = () => {
-  const [pixelRatio, setPixelRatio] = useState(1);
+  const [pixelRatio, setPixelRatio] = useState<number>(1);
 
   useEffect(() => {
+    // This ensures that window is accessed only on the client side
     setPixelRatio(window.devicePixelRatio);
-  }, [setPixelRatio]);
 
-  function getRandomInt(min: number, max: number) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min);
-  }
+    // Handle resize events to update the pixel ratio
+    const handleResize = () => {
+      setPixelRatio(window.devicePixelRatio);
+    };
 
-  function getRandomArbitrary(min: number, max: number) {
-    return Math.random() * (max - min) + min;
-  }
-
-  const [detail, setDetail] = useState(getRandomInt(10, 175));
-  const [height, setHeight] = useState(getRandomArbitrary(0.05, 0.3));
-  const [texture, setTexture] = useState(getRandomInt(1, 3.5));
-  const [scale, setScale] = useState(getRandomInt(2, 5));
-  const rotation = 1;
-  const offset = { x: 0, z: 0 };
-
-  const randomizeTerrain = () => {
-    setDetail(getRandomInt(10, 175));
-    setHeight(getRandomArbitrary(0.05, 0.3));
-    setTexture(getRandomInt(1, 3.5));
-    setScale(getRandomInt(2, 5));
-  };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
-    <>
-      <button css={styleRandomizeButton} onClick={randomizeTerrain} />
-
-      <Canvas
-        css={{ animation: 'fadeIn 3s forwards' }}
-        gl={{ antialias: true }}
-        dpr={pixelRatio}
-        onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
-        camera={{ position: [0.4, 0.4, 0.4] }}
-      >
-        <CanvasTerrain
-          detail={detail}
-          height={height}
-          texture={texture}
-          scale={scale}
-          rotation={rotation}
-          offset={offset}
-        />
-      </Canvas>
-    </>
+    <Canvas dpr={pixelRatio}>
+      <PerspectiveCamera makeDefault position={[0, 2, 10]} />
+      <ambientLight intensity={0.5} />
+      <pointLight position={[10, 10, 10]} />
+      <CanvasTerrain />
+    </Canvas>
   );
 };
 
-export default React.memo(CanvasLoader);
+export default CanvasLoader;
