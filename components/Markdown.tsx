@@ -7,7 +7,6 @@ import rehypeRaw from 'rehype-raw';
 import { generateSlug } from '@/utils/generateSlug';
 import rangeParser from 'parse-numeric-range';
 import remarkGfm from 'remark-gfm';
-import { Callout, Accordion, Quote } from '@/components/CustomMDComponents';
 
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
@@ -207,9 +206,6 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
   }
 
   const MarkdownComponents: object = {
-    callout: ({ node, ...props }) => <Callout {...props} />,
-    accordion: ({ node, ...props }) => <Accordion {...props} />,
-    quote: ({ node, ...props }) => <Quote {...props} />,
     code({
       node,
       inline,

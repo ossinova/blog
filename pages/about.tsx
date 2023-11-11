@@ -6,6 +6,7 @@ import Container from '@/components/Container';
 import Avatar from '@/components/Avatar';
 import { CtaButtons, ContactButton } from '@/components/CtaButtons';
 import SocialIcons from '@/components/SocialIcons';
+import CertificationBadges from '@/components/CertificationBadges';
 import Timeline from '@/components/Timeline';
 
 import { aboutContent, timelineContent } from '@/data/content';
@@ -13,9 +14,10 @@ import { AboutTypes, TimelineContentTypes } from '@/types/about';
 import { CtaButtonsTypes, ContactButtonTypes } from '@/types/button';
 import { SocialIconsTypes } from '@/types/icons';
 import { TimelineTypes } from '@/types/about';
+import { CertificationTypes } from '@/types/certifications';
 
 type AboutPageProps = {
-  about: AboutTypes & SocialIconsTypes & CtaButtonsTypes & ContactButtonTypes;
+  about: AboutTypes & SocialIconsTypes & CtaButtonsTypes & ContactButtonTypes & CertificationTypes;
   timeline: TimelineTypes & TimelineContentTypes;
 };
 
@@ -196,6 +198,37 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
       },
     },
   });
+
+const styleCertificationBadges = css({
+  '.certification-grid': {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '16px', // Adjust the gap to your liking
+    justifyContent: 'center', // This will center the items in the row
+  },
+  '.certification-item': {
+    flex: '1 0 calc(33.333% - 16px)', // Adjust the width for 3 per row, subtracting the gap
+    display: 'flex',
+    justifyContent: 'center', // Center the image in the flex item
+    flexDirection: 'column', // Stack the image and text vertically
+    alignItems: 'center', // Center-align the items horizontally
+  },
+  '.certification-item a': {
+    maxWidth: '100px', // Adjust the size to your liking
+    display: 'block',
+  },
+  '.certification-item img': {
+    maxWidth: '100%',
+    height: 'auto',
+  },
+  '.certification-item span': {
+    textAlign: 'center', // Center-align the text
+    fontSize: '0.75rem', // Smaller font size; adjust as needed
+    display: 'block', // Ensure the span takes the full width available
+    width: '100%', // Ensure it takes up the full width of its parent
+  },
+});
+
   const styleAvailability = css({
     h4: {
       fontFamily: 'var(--font-secondary)',
@@ -251,13 +284,22 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
               <li>
                 <h3 aria-label={about.skills.title}>{about.skills.title}</h3>
               </li>
+              <h1>Skills</h1>
               {generateListItems(about.skills.items)}
             </ul>
             <ul className="skills">
               <li>
                 <h3 aria-hidden="true">&nbsp;</h3>
               </li>
-              {generateListItems(about.stack.items)}
+              <h1>Data Stack</h1>
+              {generateListItems(about.datastack.items)}
+            </ul>
+            <ul className="skills">
+              <li>
+                <h3 aria-hidden="true">&nbsp;</h3>
+              </li>
+              <h1>Web Stack</h1>
+              {generateListItems(about.webstack.items)}
             </ul>
           </div>
           <div className="grid">
@@ -270,30 +312,16 @@ const About: NextPage<AboutPageProps> = ({ about, timeline }) => {
               {generateListItems(about.experience.items)}
             </ul>
           </div>
-          <div className="grid">
-            <ul className="availability">
+          <div className="grid" id="certifications" >
+            <ul css={styleCertificationBadges}>
               <li>
-                <h3 aria-label={about.availability.title}>
-                  {about.availability.title}
+                <h3 aria-label={about.certifications.title}>
+                  {about.certifications.title}
                 </h3>
               </li>
               <li>
-                {about.availability.text}{' '}
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={about.availability.link}
-                >
-                  {about.availability.text2}
-                </a>
-                .
+                <CertificationBadges about={about} />
               </li>
-              <ul css={styleAvailability} className="subheading">
-                <li>
-                  <h4>{about.availability.title2}</h4>
-                </li>
-                {generateListItems(about.availability.items)}
-              </ul>
             </ul>
           </div>
           <div className="grid">

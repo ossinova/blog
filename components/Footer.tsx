@@ -199,7 +199,10 @@ const Footer: FC<FooterProps> = () => {
         <div>
           {footer.copyright.text}
           {new Date().getFullYear() + ' '}
-          {footer.copyright.name} • <SiteViewCount />
+          {footer.copyright.name} • <SiteViewCount /> • <Link href={footer.copyright.inspired.path}
+                    aria-label={footer.copyright.inspired.title}
+                  >{footer.copyright.inspired.name}
+            </Link>
         </div>
       </div>
     </footer>

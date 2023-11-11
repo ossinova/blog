@@ -11,7 +11,7 @@ const nextConfig = {
       },
       {
         source: '/resume',
-        destination: '/amir-ardalan-resume.pdf',
+        destination: '/oscar-dyremyhr-resume.pdf',
         permanent: true,
       },
     ];

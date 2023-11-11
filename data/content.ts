@@ -1,8 +1,8 @@
 export const homeContent = {
   meta: {
-    title: 'Oscar Dyremyhr – Developer & designer',
+    title: 'Oscar Dyremyhr – Portfolio and Blog',
     description:
-      'Developer, designer, and React enthusiast. Making websites since before the internet was cool.',
+      'Portfolio and Blog',
   },
   typed: [
     `I craft digital experiences`,
@@ -15,7 +15,7 @@ export const homeContent = {
   ],
   title: 'Oscar Dyremyhr',
   description:
-    'Developer, designer, and React enthusiast. Making websites since before the internet was cool.',
+    'Portfolio and Blog',
   items: [
     {
       path: '/blog',
@@ -42,7 +42,7 @@ export const blogContent = {
   meta: {
     title: 'Blog – Oscar Dyremyhr',
     description:
-      'Thoughts on web development, design, and technology. Detailed guides for React, Next.js, TypeScript, and Markdown projects.',
+      'Thoughts on data engineering, coding and markdown projects.',
   },
   error: {
     database: '⚠️ Database Error: Posts Could not be loaded.',
@@ -101,7 +101,7 @@ export const aboutContent = {
   },
   bio: {
     subheading: `Hey there, I'm Oscar 👋`,
-    content: `I'm a developer/designer who's passionate about crafting outstanding digital experiences. This blog is a platform to document my career journey, learn in public, and share my knowledge with the web development community.`,
+    content: `I'm a data engineer driven by the challenge of building exceptional data frameworks and infrastructures. This blog serves as my digital canvas to chronicle my professional path, engage in transparent learning, and contribute my expertise to the data engineering community.`,
     items: [
       {
         path: '/resume',
@@ -118,19 +118,27 @@ export const aboutContent = {
   skills: {
     title: 'Proficiencies',
     items: [
-      'Fullstack Dev',
-      'TypeScript',
-      'JavaScript',
-      'HTML & CSS',
+      'Data Engineering',
+      'Python',
+      'SQL',
+      'PySpark',
+      'Azure',
+      'DevOps',
+      'Git',
+      'Atlassian',
+      'Web Development',
       'React',
-      'Next.js',
-      'Tailwind CSS',
-      'Responsive UI',
-      'Performance',
-      'Accessibility',
     ],
   },
-  stack: {
+  datastack: {
+    items: [
+      'Databricks',
+      'Azure Data Factory',
+      'Azure Data Lake Storage',
+      'Azure SQL Database',
+    ],
+  },
+   webstack: {
     items: [
       'Node.js',
       'Three.js',
@@ -147,8 +155,9 @@ export const aboutContent = {
   experience: {
     title: 'Experience',
     items: [
-      "With over a decade of experience in web development, I've had the privilege of working with iconic brands like Nike, Columbia Sportswear, and KEEN Footwear.",
-      "My expertise spans full stack development, UI design, web accessibility, ecommerce, and rapid prototyping. I'm passionate about pushing the boundaries of web technologies and user experience in a world where humans and machines are increasingly connected.",
+      "With a robust three-year track record in data engineering within Helthjem and Capgemini's Insights & Data division, my role involves harnessing data's transformative power for client business enhancement.",
+      "My tenure has been marked by the construction of intricate data pipelines, ETL processes, and data storage solutions across AWS, GCP, and Azure, employing the latest in technology. My fervor lies in the realm of data engineering and analytics, with a commitment to lifelong learning and skill enhancement evidenced by the achievement of 8 Databricks badges (See below).",
+      "Armed with a suite of tools including Python, R, Tableau, PowerBI, SQL, and Spark, I excel in translating data insights into strategic business actions. I'm dedicated to crafting top-tier, scalable, and forward-thinking data solutions that drive value for my clients and colleagues, echoing the innovative spirit found in today's dynamic connection between humans and digital technologies.",
     ],
   },
   availability: {
@@ -168,11 +177,22 @@ export const aboutContent = {
     title: 'Certifications',
     items: [
       {
-        title: "Databricks Data Engineering Professional",
-        img: "certs/dbx_engineer_pro.png",
-        issued: "2023-06-27",
-        path: "https://cert.com",
-
+        path: 'https://credentials.databricks.com/a11b9fe6-b21f-4f87-9c24-55c2dd606bf7#gs.07bw4b',
+        title: 'Databricks Certified Data Engineer Professional',
+        issued: 'Databricks @ June 27, 2023',
+        imageUrl: '/certs/dbx_engineer_pro.png',
+      },
+      {
+        path: 'https://credentials.databricks.com/edc89e6f-7af4-4580-9b92-0c033cdbadef#gs.07byuf',
+        title: 'Databricks Certified Data Engineer Associate',
+        issued: 'Databricks @ June 22, 2023',
+        imageUrl: '/certs/dbx_engineer_ass.png',
+      },
+      {
+        path: 'https://credentials.databricks.com/29b9e0dc-f7e5-4f25-ba69-3aa925dbe875#gs.079z03',
+        title: 'Databricks Certified Data Analyst Associate',
+        issued: 'Databricks @ June 29, 2023',
+        imageUrl: '/certs/dbx_analyst_ass.png',
       },
     ],
   },
@@ -511,6 +531,11 @@ export const footer = {
   copyright: {
     text: 'Copyright © ',
     name: '— Oscar Dyremyhr',
+    inspired: {
+      name: 'Inspired by amirardalan',
+      path: 'https://amirardalan.com',
+      title: "Amir's Blog",
+    },
   },
 };
 

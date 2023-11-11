@@ -41,7 +41,10 @@ export interface AboutTypes {
     title: string;
     items: string[];
   };
-  stack: {
+  datastack: {
+    items: string[];
+  };
+  webstack: {
     items: string[];
   };
   experience: {
@@ -55,6 +58,10 @@ export interface AboutTypes {
     title2: string;
     location: string;
     link: string;
+    items: string[];
+  };
+  certifications: {
+    title: string;
     items: string[];
   };
   contact: {

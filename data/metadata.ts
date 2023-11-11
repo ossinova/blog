@@ -1,7 +1,7 @@
 export const metadata = {
   name: 'Oscar Dyremyhr',
-  title: 'Oscar Dyremyhr – Developer & Designer',
+  title: 'Oscar Dyremyhr – Portfolio and Blog',
   description:
-    'Developer, designer, and React enthusiast. Making websites since before the internet was cool.',
+    'Portfolio and Blog.',
   xHandle: '@oscardyremyr',
 };
