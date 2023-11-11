@@ -4,4 +4,5 @@ export const metadata = {
   description:
     'Developer, designer, and React enthusiast. Making websites since before the internet was cool.',
   xHandle: '@oscardyremyr',
+  url: 'https://localhost:3000',
 };

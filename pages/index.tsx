@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { css } from '@emotion/react';
 
 import Container from '@/components/Container';
@@ -109,7 +110,7 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
   });
   const styleMainRight = css({
     position: 'relative',
-    background: 'var(--color-gradient)',
+    // background: 'var(--color-gradient)',
     height: '72vh',
     '@media (max-width: 890px)': {
       height: '45vh',
@@ -142,8 +143,16 @@ const Home: NextPage<HomeProps> = ({ home, featuredPost, latestPost }) => {
             />
           </div>
         </div>
-        <div css={styleMainRight} className="animationWrapper">
-          <CanvasLoader />
+        <div css={styleMainRight} className="animationWrapper" style={{ position: 'relative' }}>
+          {/* <CanvasLoader /> */}
+          <Image
+            src="/hero2.png" // The path to your image file
+            alt="Hero Image"
+            layout="fill" // This will make the image fill the parent container
+            objectFit="contain" // This is like background-size: cover for the img tag
+            priority // This tells Next.js to preload this image on the initial load
+          />
+
         </div>
       </main>
     </Container>
