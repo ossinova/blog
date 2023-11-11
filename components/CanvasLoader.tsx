@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { PerspectiveCamera, OrbitControls } from '@react-three/drei';
-import CanvasTerrain from '@/components/CanvasTerrain'; // Make sure the path is correct
+import Model from '@/components/Model'; // Make sure the path is correct
 
 const CanvasLoader: FC = () => {
   const [pixelRatio, setPixelRatio] = useState<number>(1);
@@ -26,7 +26,7 @@ const CanvasLoader: FC = () => {
       <PerspectiveCamera makeDefault position={[0, 2, 10]} />
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} />
-      <CanvasTerrain />
+      <Model />
     </Canvas>
   );
 };
