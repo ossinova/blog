@@ -1,18 +1,13 @@
 import React, { useRef, useEffect } from 'react';
 import { useGLTF } from '@react-three/drei';
-import { useFrame, useThree } from '@react-three/fiber';
+import { useFrame } from '@react-three/fiber';
+import * as THREE from 'three';
 
 const CanvasTerrain = () => {
-  const modelRef = useRef();
-  const { scene } = useGLTF('/avatar/your_avatar.glb');
-  // const { camera } = useThree();
+  // Specify the type of the ref as THREE.Object3D or a subclass like THREE.Mesh
+  const modelRef = useRef<THREE.Object3D>(null);
 
-  // useEffect(() => {
-  //   if (modelRef.current) {
-  //     // Adjust the camera to look at the model
-  //     camera.lookAt(modelRef.current.position);
-  //   }
-  // }, [camera, modelRef]);
+  const { scene } = useGLTF('/avatar/your_avatar.glb');
 
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
