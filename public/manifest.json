@@ -1,0 +1,53 @@
+{
+    "short_name": "Oscar Dyremyhr",
+    "name": "Oscar Dyremyhr – Developer & designer",
+    "icons": [
+      {
+        "src": "/apple-icon.png",
+        "type": "image/png",
+        "sizes": "192x192",
+        "purpose": "any",
+        "platform": "macos"
+      },
+      {
+        "src": "/touch-310.png",
+        "type": "image/png",
+        "sizes": "310x310",
+        "purpose": "maskable",
+        "platform": "web"
+      },
+      {
+        "src": "/touch-310.png",
+        "type": "image/png",
+        "sizes": "310x310",
+        "purpose": "maskable",
+        "platform": "windows"
+      },
+      {
+        "src": "/touch-192.png",
+        "type": "image/png",
+        "sizes": "192x192",
+        "purpose": "maskable"
+      }
+    ],
+    "start_url": "/",
+    "background_color": "#f7f7f7",
+    "display": "standalone",
+    "scope": "/",
+    "shortcuts": [
+        {
+          "name": "Oscar Dyremyhr Blog",
+          "short_name": "Oscar",
+          "description": "Developer, designer, and React enthusiast. Making websites since before the internet was cool.",
+          "url": "/"
+        }
+      ],
+      "description": "Oscar Dyremyhr Thumbnail",
+      "screenshots": [
+        {
+          "src": "/thumbnail.png",
+          "type": "image/png",
+          "sizes": "1200x627"
+        }
+      ]
+    }
