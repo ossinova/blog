@@ -44,7 +44,7 @@ export async function generateRssFeed() {
       link: url,
       description: post.teaser ?? 'No description available',
       content: post.content ?? 'No content available',
-      date: new Date(post.publishedAt
+      date: new Date(post.publishedAt),
       author: [author],
     });
   });
