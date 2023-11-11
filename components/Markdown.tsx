@@ -7,7 +7,6 @@ import rehypeRaw from 'rehype-raw';
 import { generateSlug } from '@/utils/generateSlug';
 import rangeParser from 'parse-numeric-range';
 import remarkGfm from 'remark-gfm';
-import { Callout, Accordion, Quote } from '@/components/CustomMDComponents';
 
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
