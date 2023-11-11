@@ -1,5 +1,5 @@
 User-agent: *
-Sitemap: https://amirardalan.com/sitemap.xml
+Sitemap: https://oscardyremyhr.me/sitemap.xml
 
 Disallow: /*.json$
 Disallow: /*_buildManifest.js$

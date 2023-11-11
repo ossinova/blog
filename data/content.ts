@@ -195,6 +195,24 @@ export const aboutContent = {
         issued: 'Databricks @ June 29, 2023',
         imageUrl: '/certs/dbx_analyst_ass.png',
       },
+      {
+        path: 'https://credentials.databricks.com/875164da-5d6c-4fe5-a23e-e904037901df#gs.09qhbu',
+        title: 'Databricks Academy Accreditation - Generative AI Fundamentals',
+        issued: 'Databricks @ June 30, 2023',
+        imageUrl: '/certs/dbx_accred_ai.png',
+      },
+      {
+        path: 'https://credentials.databricks.com/ee9ae9cd-3546-4a8d-8845-4977667a2366#gs.09qml1',
+        title: 'Databricks Academy Accreditation - Azure Databricks Platform Architect',
+        issued: 'Databricks @ June 20, 2023',
+        imageUrl: '/certs/dbx_accred_architect.png',
+      },
+      {
+        path: 'https://credentials.databricks.com/a3754aac-107e-421e-a796-df2dff25a642#gs.09qk5f',
+        title: 'Databricks Academy Accreditation - Databricks Lakehouse Fundamentals',
+        issued: 'Databricks @ Oct 25, 2022',
+        imageUrl: '/certs/dbx_accred_fund.png',
+      },
     ],
   },
   contact: {
