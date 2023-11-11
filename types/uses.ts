@@ -3,6 +3,7 @@ export interface UsesTypes {
   tools: { content: string };
   stack: { content: string };
   heading: string;
+  subheading: string;
   devices: { content: string };
   meta: {
     title: string;
@@ -13,7 +14,6 @@ export interface UsesTypes {
     description: string;
     uses: string[];
     heading: string;
-    subheading: string;
     devices: { content: string }[];
     stack: { content: string }[];
     tools: { content: string }[];

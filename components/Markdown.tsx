@@ -206,9 +206,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
   }
 
   const MarkdownComponents: object = {
-    callout: ({ node, ...props }) => <Callout {...props} />,
-    accordion: ({ node, ...props }) => <Accordion {...props} />,
-    quote: ({ node, ...props }) => <Quote {...props} />,
+
     code({
       node,
       inline,

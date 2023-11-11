@@ -2,16 +2,20 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { generateRssFeed } from '@/utils/generateRssFeed';
 
-export default async function jsonFeed(req: NextApiRequest, res: NextApiResponse) {
+export default async function jsonRoute(req: NextApiRequest, res: NextApiResponse) {
   try {
     const { jsonFeed } = await generateRssFeed();
-    if (!jsonFeed) {
-      throw new Error('JSON feed is undefined or empty.');
-    }
     res.setHeader('Content-Type', 'application/json');
-    res.status(200).end(jsonFeed);
+    res.status(200).send(jsonFeed);
   } catch (e) {
-    console.error('Failed to generate JSON feed:', e);
-    res.status(500).json({ error: 'Internal Server Error', message: e.message, stack: e.stack });
+    // Since 'e' is of type 'unknown', we check if it's an instance of Error to access its 'message' and 'stack'.
+    if (e instanceof Error) {
+      console.error('Failed to generate JSON feed:', e);
+      res.status(500).json({ error: 'Internal Server Error', message: e.message, stack: e.stack });
+    } else {
+      // If it's not an Error instance, we can only log it and send a generic error message.
+      console.error('Failed to generate JSON feed:', e);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
   }
 }

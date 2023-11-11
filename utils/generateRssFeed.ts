@@ -42,8 +42,8 @@ export async function generateRssFeed() {
       title: post.title,
       id: url,
       link: url,
-      description: post.teaser,
-      content: post.content,
+      description: post.teaser ?? 'No description available',
+      content: post.content ?? 'No content available',
       date: new Date(post.publishedAt),
       author: [author],
     });
