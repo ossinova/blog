@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import { Html, Head, Main, NextScript, DocumentProps } from 'next/document';
+import { Analytics } from '@vercel/analytics/react';
 
 const Document: NextPage<DocumentProps> = () => {
   return (
@@ -44,6 +45,7 @@ const Document: NextPage<DocumentProps> = () => {
         />
         <Main />
         <NextScript />
+        <Analytics />
       </body>
     </Html>
   );
