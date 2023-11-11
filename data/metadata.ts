@@ -4,4 +4,5 @@ export const metadata = {
   description:
     'Portfolio and Blog.',
   xHandle: '@oscardyremyr',
+  url: 'https://localhost:3000',
 };

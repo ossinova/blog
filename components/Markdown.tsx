@@ -206,6 +206,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
   }
 
   const MarkdownComponents: object = {
+
     code({
       node,
       inline,

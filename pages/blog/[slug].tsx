@@ -25,6 +25,9 @@ import LikeButton from '@/components/LikeButton';
 import BlogPostTweet from '@/components/BlogPostTweet';
 import TableOfContents from '@/components/TableOfContents';
 import PostViewCount from '@/components/PostViewCount';
+import ReactUtterances from 'react-utterances'
+import { Comments } from '@/components/Comments';
+import { Theme } from '@emotion/react';
 
 const BlogPostControls = dynamic(
   () => import('@/components/BlogPostControls'),
@@ -114,13 +117,18 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
     ? post.content.match(/!\[.*?\]\((.*?)\)/)?.[1]
     : null;
 
+  const ScrollProgressBar = dynamic(() => import('@/components/ScrollProgressBar'), {
+    ssr: false, // This will load the component only on the client side
+  })
+    
   const RenderBlogPost = () => {
     return (
       <div className={isPublished ? 'blog' : 'blog admin'} css={styleBlogPost}>
         {!isPublished ? (
           <div className="draftNotification warn">{admin.drafts.notice}</div>
         ) : null}
-
+        {/* Progress bar */}
+      <ScrollProgressBar />
         <article className="post postFull">
           <div className="categoryWrapper">
             {isFeatured ? (
@@ -210,7 +218,6 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
             />
           )}
         </article>
-
         <BlogNavigation
           feed={feed}
           post={post}
@@ -219,6 +226,7 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
           liked={liked}
           handleLike={handleLike}
         />
+        <Comments />
       </div>
     );
   };
