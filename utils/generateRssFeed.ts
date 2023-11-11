@@ -9,7 +9,7 @@ export async function generateRssFeed() {
     const author = {
       name: 'Oscar Dyremyhr', // Replace with the name of the author or site owner
       email: 'oscar.dyremyhr@gmail.com', // Replace with the author's email
-      link: 'https://twitter.com/authorHandle', // Replace with the author's Twitter handle or equivalent
+      link: 'https://linkedin.com/in/oscar-dyremyhr', // Replace with the author's Twitter handle or equivalent
     };
     const date = new Date();
 

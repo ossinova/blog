@@ -14,12 +14,11 @@ const styleXButton = css({
   alignItems: 'center',
 });
 
+
 const styleXText = css({
   marginLeft: 10,
+  marginRight: 10,
   textDecoration: 'underline',
-  '@media (max-width: 480px)': {
-    marginLeft: 5,
-  },
 });
 
 const XShareButton: FC<XshareButtonProps> = ({

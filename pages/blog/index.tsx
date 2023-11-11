@@ -44,7 +44,6 @@ export const getStaticProps: GetStaticProps<BlogProps> = async () => {
 };
 
 const Blog = ({ blog, feed }: BlogProps) => {
-  console.log(feed)
   return (
     <Container title={blog.meta.title} description={blog.meta.description}>
       <BlogStyles>

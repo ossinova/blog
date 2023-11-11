@@ -23,6 +23,7 @@ import { AdminControlsTypes } from '@/types/admin';
 import { BlogNavigationTypes } from '@/types/blog';
 import LikeButton from '@/components/LikeButton';
 import BlogPostTweet from '@/components/BlogPostTweet';
+import BlogPostLinkedIn from '@/components/BlogPostLinkedIn';
 import TableOfContents from '@/components/TableOfContents';
 import PostViewCount from '@/components/PostViewCount';
 import ReactUtterances from 'react-utterances'
@@ -191,6 +192,15 @@ const BlogPost: FC<BlogPostProps> = ({ blogPost, admin, post, feed }) => {
             </div>
             <div className="buttonHover">
               <BlogPostTweet
+                title={post.title}
+                url={url}
+                text={false}
+                size={24}
+                color={'var(--color-heading)'}
+              />
+            </div>
+            <div className="buttonHover">
+              <BlogPostLinkedIn
                 title={post.title}
                 url={url}
                 text={false}

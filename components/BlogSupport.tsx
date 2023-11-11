@@ -144,9 +144,9 @@ const BlogSupport: FC<BlogSupportProps> = ({
             display: !addressCopied ? 'flex' : 'none',
           },
           '.ether': {
-            background: 'var(--icon-eth) no-repeat',
+            background: 'var(--icon-vipps) no-repeat',
             backgroundSize: 'contain',
-            height: 33,
+            height: 50,
             width: 133,
             marginBottom: '1rem',
             '@media (max-width: 480px)': {
@@ -326,20 +326,20 @@ const BlogSupport: FC<BlogSupportProps> = ({
                   >
                     Buy me a coffee
                   </button>
-                  <BlogPostTweet
+                  {/* <BlogPostTweet
                     title={title}
                     url={url}
                     text={true}
                     size={19}
                     color={'var(--color-text)'}
-                  />
+                  /> */}
                   <BlogPostLinkedIn
                     title={title}
                     url={url}
                     text={true}
                     size={19}
                     color={'var(--color-text)'}
-                  />
+                  /> 
                 </div>
               </div>
             </div>
@@ -350,19 +350,19 @@ const BlogSupport: FC<BlogSupportProps> = ({
               <div className="ethAddressCopied">
                 <div className="qrCode">
                   <Image
-                    src="/eth-qr.png"
+                    src="/vipps-qr.jpg"
                     width={131}
                     height={131}
-                    alt="amirardalan.eth QR Code"
+                    alt="Oscar's VIPPS QR Code"
                   />
                 </div>
                 <div className="copyConfirmation">
                   <button
-                    aria-label="Copy ETH address"
+                    aria-label="Copy VIPPS number"
                     className="ethAddress"
                     onClick={handleCopyAddress}
                   >
-                    amirardalan.eth
+                    98605552
                   </button>
                   <p className="successMessage">Copied to clipboard ✅</p>
                 </div>
@@ -381,9 +381,8 @@ const BlogSupport: FC<BlogSupportProps> = ({
               >
                 <div className="ether" />
               </a>
-
               <a
-                href="https://www.paypal.com/donate/?hosted_button_id=PDSXCAVYMLW2G"
+                href="https://www.paypal.com/donate/?hosted_button_id=5PVEX9S9MFJWJ"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() =>
