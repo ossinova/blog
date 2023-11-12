@@ -24,6 +24,12 @@ export const homeContent = {
       target: '_self',
     },
     {
+      path: '/projects',
+      title: 'Projects',
+      target: '_self',
+      style: 'reverse',
+    },
+    {
       path: '/about',
       title: 'About',
       target: '_self',

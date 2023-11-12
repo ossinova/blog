@@ -16,6 +16,14 @@ export const nav = [
     icon: false,
   },
   {
+    title: 'Projects',
+    path: '/projects',
+    exact: '',
+    cName: 'projectsNav',
+    aria: 'Projects',
+    icon: false,
+  },
+  {
     title: 'About',
     path: '/about',
     exact: '',
