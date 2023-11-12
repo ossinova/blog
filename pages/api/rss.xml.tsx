@@ -22,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Fetch your content and add it to the feed
     posts.forEach(post => {
         const url = `${siteUrl}/blog/${post.slug}`;
-        const imageurl = `${siteUrl}/api/og?title=${post.slug}`;
+        const imageurl = `${siteUrl}/api/og?title=${post.title}&description=${post.teaser}`;
         feed.item({
             title: post.title,
             guid:imageurl,
