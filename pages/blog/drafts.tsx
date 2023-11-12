@@ -122,12 +122,12 @@ const Drafts = ({ drafts, admin, breadcrumb }: DraftsProps) => {
 export default Drafts;
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  const session = await getSession({ req });
-  if (!session) {
-    res.statusCode = 403;
-    return { props: { drafts: [] } };
-  }
-
+  try {
+    const session = await getSession({ req });
+    if (!session) {
+        res.statusCode = 403;
+        return { props: { drafts: [] } };
+    }
   const drafts = await prisma.post.findMany({
     where: {
       author: { email: session?.user?.email },
@@ -146,4 +146,8 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       breadcrumb: breadcrumbContent,
     },
   };
+} catch (error) {
+  console.error('Error in getServerSideProps:', error);
+  // Handle error appropriately
+}
 };
