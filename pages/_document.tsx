@@ -10,6 +10,7 @@ const Document: NextPage<DocumentProps> = () => {
         <link rel="manifest" href="/manifest.json" />
         <meta httpEquiv="content-type" content="text/html; charset=utf-8" />
         <meta name="author" content="Oscar Dyremyhr"/>
+        {/* <link rel="alternate" type="application/rss+xml" title="Our great RSS feed" href="/rss.xml" /> */}
         <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_ANALYTICS_ID}`}
