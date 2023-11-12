@@ -22,9 +22,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Fetch your content and add it to the feed
     posts.forEach(post => {
         const url = `${siteUrl}/blog/${post.slug}`;
+        const imageurl = `${siteUrl}/api/og?title=${post.slug}`;
         feed.item({
             title: post.title,
-            guid: url,
+            guid:imageurl,
             url: url,
             description: post.teaser ?? 'No description available',
             date: post.publishedAt,
