@@ -21,7 +21,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // Fetch your content and add it to the feed
     posts.forEach(post => {
-        console.log(post);
         const url = `${siteUrl}/blog/${post.slug}`;
         feed.item({
             title: post.title,
