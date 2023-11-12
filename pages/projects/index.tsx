@@ -65,7 +65,7 @@ export async function getStaticProps() {
     const githubUsername = process.env.NEXT_PUBLIC_GITHUB_PROJECTS_USERNAME!;
     console.log("GitHub Username: ", githubUsername);
     // Fetch data from GitHub API
-    const projects = await getGithubRepos('oscardyremyhr');
+    const projects = await getGithubRepos(githubUsername);
     return { props: { projects } };
 }
 
