@@ -5,7 +5,7 @@ import prisma from '@/lib/prisma';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const feed = new RSS({
         title: "Oscar Dyremyhr",
-        description: "Portyfolio and Blog",
+        description: "Portfolio and Blog",
         site_url: "https://oscardyremyhr.me/",
         feed_url: "https://oscardyremyhr.me/rss.xml",
         pubDate: new Date(),

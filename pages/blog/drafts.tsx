@@ -124,6 +124,7 @@ export default Drafts;
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   try {
     const session = await getSession({ req });
+    console.log("Session:", session);
     if (!session) {
         res.statusCode = 403;
         return { props: { drafts: [] } };

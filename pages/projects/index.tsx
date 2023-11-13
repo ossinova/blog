@@ -43,9 +43,9 @@ const Projects = ({ projects }: ProjectsProps) => {
                             >
                                 <div className="blogListDetails">
                                 <time dateTime={formatDate(project.created_at, 'numeric')}>{formatDate(project.created_at, 'numeric')}</time>
-                                <span className="divider1">•</span>{' '}
+                                <span className="divider1"> • </span>{' '}
                                 <span className="likes">{project.stargazers_count} stars</span>
-                                <span className="divider1">•</span>{' '}
+                                <span className="divider1"> • </span>{' '}
                                 <span className="likes">{project.forks_count} forks</span>
                                 </div>
                             </div>
