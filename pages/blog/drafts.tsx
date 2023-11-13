@@ -128,27 +128,32 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
         res.statusCode = 403;
         return { props: { drafts: [] } };
     }
-  const drafts = await prisma.post.findMany({
-    where: {
-      author: { email: session?.user?.email },
-      published: false,
-    },
-    include: {
-      author: {
-        select: { name: true },
+
+    const drafts = await prisma.post.findMany({
+      where: {
+        author: { email: session?.user?.email },
+        published: false,
       },
-    },
-  });
-  return {
-    props: {
-      drafts: JSON.parse(JSON.stringify(drafts)),
-      admin: adminContent,
-      breadcrumb: breadcrumbContent,
-    },
-  };
-} catch (error) {
-  console.error('Error in getServerSideProps:', error);
-  // Handle error appropriately
-  return { props: { error: 'An error occurred.' } };
-}
+      include: {
+        author: {
+          select: { name: true },
+        },
+      },
+    });
+
+    // Log the drafts or any other information you want to check
+    console.log("Drafts:", drafts);
+
+    return {
+      props: {
+        drafts: JSON.parse(JSON.stringify(drafts)),
+        admin: adminContent,
+        breadcrumb: breadcrumbContent,
+      },
+    };
+  } catch (error) {
+    console.error('Error in getServerSideProps:', error);
+    // Handle error appropriately
+    return { props: { error: 'An error occurred.' } };
+  }
 };
