@@ -2,7 +2,7 @@
 
 const formatDate = (date: Date, format?: 'long' | 'numeric') => {
   const formatMonth = format || 'long'; // default value is 'long'
-  const formatDate = new Date(date).toLocaleDateString('en-US', {
+  const formatDate = new Date(date).toLocaleDateString('en-GB', {
     timeZone: `${process.env.NEXT_PUBLIC_TIMEZONE}`,
     month: formatMonth,
     day: 'numeric',
