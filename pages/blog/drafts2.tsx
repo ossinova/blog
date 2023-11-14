@@ -18,7 +18,7 @@ const Drafts: FC<DraftsProps> = ({ drafts }) => {
   useEffect(() => {
     console.log('Session:', session);
   }, [session]);
-  
+
   return (
     <Container title={adminContent.drafts.meta.title} robots="noindex">
       <BlogStyles>
@@ -38,20 +38,29 @@ const Drafts: FC<DraftsProps> = ({ drafts }) => {
 export default Drafts;
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const session = await getSession({ req });
-  if (!session) {
+  try {
+    const session = await getSession({ req });
+    console.log('Session:', session);
+
+    if (!session) {
+      return { props: { drafts: [] } };
+    }
+
+    const drafts = await prisma.post.findMany({
+      where: {
+        author: { email: session?.user?.email },
+        published: false,
+      },
+    });
+
+    return {
+      props: {
+        drafts: JSON.parse(JSON.stringify(drafts)),
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching drafts:', error);
     return { props: { drafts: [] } };
   }
-
-  const drafts = await prisma.post.findMany({
-    where: {
-      author: { email: session?.user?.email },
-      published: false,
-    },
-  });
-  return {
-    props: {
-      drafts: JSON.parse(JSON.stringify(drafts)),
-    },
-  };
 };
+

@@ -23,7 +23,7 @@ const BlogAdmin: FC = () => {
   const isAdminPage = [
     '/blog/create',
     '/blog/edit/[id]',
-    '/blog/drafts',
+    '/blog/drafts2',
   ].includes(path);
   const isCreatePage = router.asPath === '/blog/create';
   const isDraftsPage = router.asPath === '/blog/drafts2';
