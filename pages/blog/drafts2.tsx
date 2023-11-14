@@ -1,10 +1,9 @@
 import { FC, useEffect, useState } from 'react';
-
 import prisma from '@/lib/prisma';
 import Container from '@/components/Container';
 import BlogStyles from '@/components/BlogStyles';
 import BlogPost from '@/components/BlogPost';
-import { adminContent, breadcrumbContent } from '@/data/content';
+import { adminContent } from '@/data/content';
 import { PostProps } from '@/types/post';
 import { GetServerSideProps } from 'next';
 import { useSession, getSession } from 'next-auth/react';
@@ -13,11 +12,31 @@ type DraftsProps = {
   drafts: PostProps[];
 };
 
-const Drafts: FC<DraftsProps> = ({ drafts }) => {
-  const { data: session } = useSession();
+const Drafts: FC<DraftsProps> = ({ drafts: initialDrafts }) => {
+  const { data: session, status } = useSession();
+  const [drafts, setDrafts] = useState(initialDrafts);
+
+  // Declare fetchDrafts as a function expression
+  const fetchDrafts = async () => {
+    if (status === "authenticated") {
+      try {
+        const fetchedDrafts = await prisma.post.findMany({
+          where: {
+            author: { email: session?.user?.email },
+            published: false,
+          },
+        });
+
+        setDrafts(fetchedDrafts); // Update the state with fetched drafts
+      } catch (error) {
+        console.error('Error fetching drafts:', error);
+      }
+    }
+  };
+
   useEffect(() => {
-    console.log('Session:', session);
-  }, [session]);
+    fetchDrafts();
+  }, [session, status]); // Add status to dependency array
 
   return (
     <Container title={adminContent.drafts.meta.title} robots="noindex">
@@ -63,4 +82,3 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     return { props: { drafts: [] } };
   }
 };
-

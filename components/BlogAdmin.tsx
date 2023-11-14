@@ -23,10 +23,10 @@ const BlogAdmin: FC = () => {
   const isAdminPage = [
     '/blog/create',
     '/blog/edit/[id]',
-    '/blog/drafts2',
+    '/blog/drafts',
   ].includes(path);
   const isCreatePage = router.asPath === '/blog/create';
-  const isDraftsPage = router.asPath === '/blog/drafts2';
+  const isDraftsPage = router.asPath === '/blog/drafts';
   const isActive: (pathname: string) => boolean = (pathname) =>
     path === pathname;
 

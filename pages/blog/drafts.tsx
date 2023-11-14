@@ -121,11 +121,17 @@ const Drafts = ({ drafts, admin, breadcrumb }: DraftsProps) => {
 
 export default Drafts;
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  const session = await getSession({ req });
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getSession({ req: context.req });
+
+  // Redirect to a different page (like login) if the session is not valid.
   if (!session) {
-    res.statusCode = 403;
-    return { props: { drafts: [] } };
+    return {
+      redirect: {
+        destination: '/login', // Change this to your login or another appropriate page
+        permanent: false,
+      },
+    };
   }
 
   const drafts = await prisma.post.findMany({
@@ -139,6 +145,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       },
     },
   });
+
   return {
     props: {
       drafts: JSON.parse(JSON.stringify(drafts)),
