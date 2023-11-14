@@ -538,4 +538,11 @@ const styleBlogPost = css({
     fontSize: 12,
     color: 'var(--color-gray)',
   },
+  '.remark-code-title': {
+    // Add your styles for elements with data-remark-code-title="true" here
+    fontSize: 12, 
+    textAlign: 'right',
+    color: 'var(--color-gray)',
+    fontFamily: 'var(--font-primary)',
+  },
 });

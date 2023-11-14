@@ -1,31 +1,57 @@
-import { useSession } from 'next-auth/react';
+import { FC, useEffect, useState } from 'react';
 
-const MyComponent = () => {
-  const { data: session, status } = useSession();
-  const isLoggedIn =
-    session && session?.user?.email == process.env.NEXT_PUBLIC_USER_EMAIL;
+import prisma from '@/lib/prisma';
+import Container from '@/components/Container';
+import BlogStyles from '@/components/BlogStyles';
+import BlogPost from '@/components/BlogPost';
+import { adminContent, breadcrumbContent } from '@/data/content';
+import { PostProps } from '@/types/post';
+import { GetServerSideProps } from 'next';
+import { useSession, getSession } from 'next-auth/react';
 
-  if (status === 'authenticated') {
+type DraftsProps = {
+  drafts: PostProps[];
+};
+
+const Drafts: FC<DraftsProps> = ({ drafts }) => {
+  const { data: session } = useSession();
+  useEffect(() => {
     console.log('Session:', session);
-    console.log('Email:', session?.user?.email);
-
-  }
-
-  if (isLoggedIn) {
-    console.log('Logged in:', isLoggedIn);
-
-
-  }
-
+  }, [session]);
+  
   return (
-    <div>
-      {status === 'authenticated' ? (
-        <p>Logged in as {session?.user?.email}</p>
-      ) : (
-        <p>Not logged in</p>
-      )}
-    </div>
+    <Container title={adminContent.drafts.meta.title} robots="noindex">
+      <BlogStyles>
+        <div className="blog admin drafts">
+          <h3>{adminContent.drafts.meta.title}</h3>
+          {drafts.map((draft) => (
+            <div key={draft.id} className="postDraft">
+              <BlogPost post={draft} />
+            </div>
+          ))}
+        </div>
+      </BlogStyles>
+    </Container>
   );
 };
 
-export default MyComponent;
+export default Drafts;
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const session = await getSession({ req });
+  if (!session) {
+    return { props: { drafts: [] } };
+  }
+
+  const drafts = await prisma.post.findMany({
+    where: {
+      author: { email: session?.user?.email },
+      published: false,
+    },
+  });
+  return {
+    props: {
+      drafts: JSON.parse(JSON.stringify(drafts)),
+    },
+  };
+};

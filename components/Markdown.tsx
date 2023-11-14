@@ -4,10 +4,13 @@ import { css } from '@emotion/react';
 
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
+import remarkGfm from 'remark-gfm'
+import smartypants from 'remark-smartypants'
+import remarkCodeTitles from "remark-flexible-code-titles";
 
 import { generateSlug } from '@/utils/generateSlug';
 import rangeParser from 'parse-numeric-range';
-import remarkGfm from 'remark-gfm';
+
 
 
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -37,9 +40,9 @@ import { MarkdownTypes } from '@/types/markdown';
 
 type BlogMarkdownProps = MarkdownTypes;
 
+
 const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
   const syntaxTheme = oneDark;
-
   const styleMarkdown = css({
     '.codeStyle, pre, code, code span': {
       fontFamily: 'var(--font-primary)',
@@ -369,7 +372,7 @@ const BlogMarkdown: FC<BlogMarkdownProps> = ({ markdown }) => {
   return (
     <ReactMarkdown
       components={MarkdownComponents}
-      remarkPlugins={[remarkGfm]}
+      remarkPlugins={[smartypants, remarkGfm, remarkCodeTitles]}
       rehypePlugins={[[rehypeRaw, { passThrough: ['element'] }]]}
       css={styleMarkdown}
     >
