@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+// Run `npm install rss` in your terminal or command prompt to install the package
 import RSS from 'rss';
 import prisma from '@/lib/prisma';
 
