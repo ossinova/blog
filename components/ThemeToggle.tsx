@@ -7,13 +7,9 @@ type ThemeToggleProps = {
 };
 
 console.log(`
- █████  ███    ███ ██ ██████  
-██   ██ ████  ████ ██ ██   ██ 
-███████ ██ ████ ██ ██ ██████  
-██   ██ ██  ██  ██ ██ ██   ██ 
-██   ██ ██      ██ ██ ██   ██ 
 <--------------------------->
 Design & Code by Amir Ardalan
+<--------------------------->
 `);
 
 const ThemeToggle: FC<ThemeToggleProps> = ({ toggleTheme }) => {

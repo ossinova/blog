@@ -283,7 +283,7 @@ export const timelineContent = {
       cName: 'event',
     },
     {
-      title: 'BSc in Information Sciennnces & Technology @ Penn State',
+      title: 'BSc in Information Sciences & Technology @ Penn State',
       content:
         'Traveled to the States to do my Bachelor in IT.',
       cName: 'event',
