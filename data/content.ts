@@ -43,7 +43,7 @@ export const blogContent = {
   meta: {
     title: 'Blog – Oscar Dyremyhr',
     description:
-      'Thoughts on data engineering, coding and markdown projects.',
+      'Thoughts on data engineering, coding and personal projects.',
   },
   error: {
     database: '⚠️ Database Error: Posts Could not be loaded.',
