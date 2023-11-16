@@ -44,6 +44,7 @@ export const getStaticProps: GetStaticProps<BlogProps> = async () => {
 };
 
 const Blog = ({ blog, feed }: BlogProps) => {
+  const postsPerPage = 5;
   return (
     <Container title={blog.meta.title} description={blog.meta.description}>
       <BlogStyles>

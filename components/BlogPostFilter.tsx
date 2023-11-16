@@ -24,7 +24,9 @@ type BlogPostFilterProps = {
   filteredPosts: BlogStatsTypes[];
 };
 
-const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
+const postsPerPage = 5;
+
+const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed}) => {
   const styleBlogCategoryNav = css({
     overflow: 'scroll',
     msOverflowStyle: 'none',
@@ -66,6 +68,33 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
       top: 17,
       right: 10,
       cursor: 'pointer',
+    },
+  });
+
+  const stylePagination = css({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: '20px',
+    button: {
+      backgroundColor: 'var(--color-bg)', // Use global variable
+      color: 'var(--color-text)', // Use global variable
+      border: `1px solid var(--color-gray-dark)`, // Use global variable
+      padding: '5px 10px',
+      margin: '0 5px',
+      cursor: 'pointer',
+      '&:hover': {
+        backgroundColor: 'var(--color-accent-gray)', // Use global variable
+      },
+      '&:focus': {
+        outline: 'none',
+        borderColor: 'var(--color-primary)', // Use global variable
+      },
+      '&.active': {
+        backgroundColor: 'var(--color-primary)', // Active button background color
+        color: 'var(--color-bg)', // Active button text color
+        borderColor: 'var(--color-primary)', // Active button border color
+      },
     },
   });
 
@@ -162,12 +191,18 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
   };
 
   const filteredPosts = searchResults(search, feed as PostFeedItem[]);
+  const [currentPage, setCurrentPage] = useState(1);
+  
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentFilteredPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
   const RenderPosts: any = () => {
-    if (filteredPosts.length > 0) {
+
+    if (currentFilteredPosts.length > 0) {
       const sortedPosts = showPopular
-        ? filteredPosts.sort((a, b) => b.likes - a.likes)
-        : filteredPosts.sort(compareID).reverse();
+        ? currentFilteredPosts.sort((a, b) => b.likes - a.likes)
+        : currentFilteredPosts.sort(compareID).reverse();
 
       return sortedPosts.map((post) => (
         <article className="publishedPost" key={post.id}>
@@ -245,6 +280,9 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
     }
   };
 
+  // Add Pagination Component
+  const numberOfPages = Math.ceil(feed.length / postsPerPage);
+
   return (
     <>
       <BlogStats feed={feed} filteredPosts={filteredPosts} />
@@ -314,6 +352,17 @@ const BlogPostFilter: FC<BlogPostFilterProps> = ({ blog, feed }) => {
       <div className="post">
         <RenderPosts />
         <ClearFilters />
+      </div>
+      <div className="pagination" css={stylePagination}>
+        {Array.from({ length: numberOfPages }, (_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrentPage(i + 1)}
+            className={currentPage === i + 1 ? 'active' : ''}
+          >
+            {i + 1}
+          </button>
+        ))}
       </div>
     </>
   );
