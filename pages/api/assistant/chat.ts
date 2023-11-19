@@ -31,9 +31,28 @@ export default async function handler(
 
     // Retrieve the latest message from the assistant
     const messages = await openai.beta.threads.messages.list(threadId);
-    const response = messages.data[0].content[0].text.value;
+    const messageContent = messages.data[0].content[0];
 
-    res.status(200).json({ response });
+let response;
+
+if ('text' in messageContent) {
+    // Handle text content
+    response = messageContent.text.value;
+} else if ('url' in messageContent) {
+    // Handle image/file content
+    // Assuming 'url' and 'filename' are properties of MessageContentImageFile
+    response = { 
+        type: 'image', 
+        url: messageContent.url,
+    };
+} else {
+    // Handle unknown content type
+    response = { type: 'unknown', value: null };
+}
+
+// Use response as needed
+res.status(200).json({ response });
+
   } else {
     // If not a POST request, return 405 Method Not Allowed
     res.setHeader('Allow', ['POST']);
