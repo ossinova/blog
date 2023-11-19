@@ -31,7 +31,7 @@ export default async function handler(
 
     // Retrieve the latest message from the assistant
     const messages = await openai.beta.threads.messages.list(threadId);
-    const response = messages.data[messages.data.length - 1].content;
+    const response = messages.data[0].content[0].text.value;
 
     res.status(200).json({ response });
   } else {
