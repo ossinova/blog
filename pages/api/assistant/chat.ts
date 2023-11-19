@@ -30,8 +30,8 @@ export default async function handler(
     } while (runStatus.status !== 'completed');
 
     // Retrieve the latest message from the assistant
-    const messages = await openai.beta.threads.runs.list(threadId);
-    const response = messages.data[messages.data.length - 1];
+    const messages = await openai.beta.threads.messages.list(threadId);
+    const response = messages.data[messages.data.length - 1].content;
 
     res.status(200).json({ response });
   } else {
